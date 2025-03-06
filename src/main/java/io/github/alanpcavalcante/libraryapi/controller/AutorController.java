@@ -1,6 +1,7 @@
 package io.github.alanpcavalcante.libraryapi.controller;
 
 import io.github.alanpcavalcante.libraryapi.controller.dto.AutorDTO;
+import io.github.alanpcavalcante.libraryapi.controller.dto.ErroResposta;
 import io.github.alanpcavalcante.libraryapi.exception.AutorDuplicado;
 import io.github.alanpcavalcante.libraryapi.exception.NenhumAutorEncontradoException;
 import io.github.alanpcavalcante.libraryapi.model.Autor;
