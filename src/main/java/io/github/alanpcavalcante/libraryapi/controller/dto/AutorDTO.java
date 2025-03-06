@@ -26,6 +26,13 @@ public class AutorDTO {
         this.nacionalidade = nacionalidade;
     }
 
+    public AutorDTO(UUID id, String nome, LocalDate dataNascimento, String nacionalidade) {
+        this.id = id;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.nacionalidade = nacionalidade;
+    }
+
     public Autor mapearParaAutor() {
         Autor autorEntidade = new Autor();
         autorEntidade.setNome(nome);

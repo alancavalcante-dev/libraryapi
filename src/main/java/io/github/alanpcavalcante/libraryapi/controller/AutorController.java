@@ -37,13 +37,11 @@ public class AutorController {
         Optional<Autor> autorPego = service.pegarAutorPorId(id);
 
         if (autorPego.isPresent()) {
-            AutorDTO autorDTO = new AutorDTO();
             Autor autor = autorPego.get();
-            autorDTO.setId(autor.getId());
-            autorDTO.setNome(autor.getNome());
-            autorDTO.setDataNascimento(autor.getDataNascimento());
-            autorDTO.setNacionalidade(autor.getNacionalidade());
-
+            AutorDTO autorDTO = new AutorDTO(
+                    autor.getId(), autor.getNome(),
+                    autor.getDataNascimento(), autor.getNacionalidade()
+            );
             return ResponseEntity.ok(autorDTO);
         }
         return ResponseEntity.notFound().build();
@@ -63,7 +61,7 @@ public class AutorController {
             service.salvar(autor);
             return ResponseEntity.created(location).build();
         }
-        
+
         Map<String, Object> respostaErro = new HashMap<>();
         respostaErro.put("status", 409);
         respostaErro.put("message", "Registro Duplicado");
@@ -90,7 +88,7 @@ public class AutorController {
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return ResponseEntity.notFound().build();
     }
 
 
@@ -106,7 +104,7 @@ public class AutorController {
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return ResponseEntity.notFound().build();
     }
 
 
